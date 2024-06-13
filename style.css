@@ -1,0 +1,115 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: perspective(500px) rotateX(-20deg); 
+}
+
+.center {
+
+  * {
+    border-radius: 50%;
+    box-shadow: 0 0 10px #0002;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .extra-small,
+  .medium,
+  .extra-large {
+    background-color: #f00;
+  }
+
+  .small,
+  .large {
+    background-color: #fff;
+  }
+
+  .extra-small {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .small {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .medium {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .large {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .extra-large {
+    width: 10rem;
+    height: 10rem;
+    pointer-events: auto;
+  }
+}
+
+.flecha {
+  width: .2rem;
+  height: 4rem;
+  background-color: #000;
+  position: absolute;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  
+  animation: cambiar 1s linear both;
+
+  &::before,
+  &::after {
+    background-color: inherit;
+    position: absolute;
+    content: '';
+  }
+
+  &::before {
+    width: 1rem;
+    height: 1rem;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    top: -20%;
+    left: -200%;
+  }
+
+  &::after {
+    width: 1.2rem;
+    height: 1rem;
+    clip-path: polygon(100% 0%, 66% 51%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+    bottom: -20%;
+    left: -240%;
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes cambiar {
+  0% {
+    transform: translate(-50%, 100vh)  rotateX(-20deg);
+    left: 50%;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) rotateX(-66deg);
+    left: 0;
+  }
+}
